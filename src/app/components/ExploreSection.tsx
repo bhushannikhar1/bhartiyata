@@ -4,6 +4,73 @@ import { useUserPreferences } from "@/contexts/UserPreferencesContext";
 const ExploreSection: React.FC = () => {
   const { userPreferences, setUserPreferences } = useUserPreferences();
 
+  // Define course data for each language
+  const courses = {
+    1: [
+      // English
+      {
+        id: "1",
+        title: "Basics of Computer",
+        description: "Learn basics of computer system",
+        imageUrl: "https://via.placeholder.com/400x300?text=Basic", // Dummy image for computer basics course
+      },
+      {
+        id: "2",
+        title: "History of Computers",
+        description: "Understand the evolution of computers",
+        imageUrl: "https://via.placeholder.com/400x300?text=Basic", // Dummy image for history of computers course
+      },
+      {
+        id: "3",
+        title: "Applications of Computers",
+        description: "Explore the rich applications of computer.",
+        imageUrl: "https://via.placeholder.com/400x300?text=Basic", // Dummy image for applications of computers course
+      },
+    ],
+    2: [
+      // Hindi
+      {
+        id: "1",
+        title: "कंप्यूटर का परिचय",
+        description: "कंप्यूटर सिस्टम के मूल सिद्धांतों के बारे में जानें।",
+        imageUrl: "https://via.placeholder.com/400x300?text=Basic", // Dummy image for computer basics course
+      },
+      {
+        id: "2",
+        title: "कंप्यूटर का इतिहास",
+        description: "कंप्यूटर के विकास को समझें।",
+        imageUrl: "https://via.placeholder.com/400x300?text=Basic", // Dummy image for history of computers course
+      },
+      {
+        id: "3",
+        title: "कंप्यूटर के अनुप्रयोग",
+        description: "कंप्यूटर के विविध अनुप्रयोगों का अन्वेषण करें।",
+        imageUrl: "https://via.placeholder.com/400x300?text=Basic", // Dummy image for applications of computers course
+      },
+    ],
+    3: [
+      // Marathi
+      {
+        id: "1",
+        title: "कंप्युटरची मूलतत्त्वे",
+        description: "कंप्युटर प्रणालीच्या मूलतत्त्वांबद्दल शिका.",
+        imageUrl: "https://via.placeholder.com/400x300?text=Basic", // Dummy image for computer basics course
+      },
+      {
+        id: "2",
+        title: "कंप्युटरचा इतिहास",
+        description: "कंप्युटरच्या विकासाची समज घेा.",
+        imageUrl: "https://via.placeholder.com/400x300?text=Basic", // Dummy image for history of computers course
+      },
+      {
+        id: "3",
+        title: "कंप्युटरचे अनुप्रयोग",
+        description: "कंप्युटरच्या विविध अनुप्रयोगांचा अभ्यास करा.",
+        imageUrl: "https://via.placeholder.com/400x300?text=Basic", // Dummy image for applications of computers course
+      },
+    ],
+  };
+
   // Method to map language number to its corresponding object
   const getLanguageDetails = (languageNumber: number) => {
     const languages = {
@@ -11,29 +78,22 @@ const ExploreSection: React.FC = () => {
         language: "English",
         translations: {
           heading: "Explore",
-          subheading: "Bhartiyata - Indianization of learning",
-          possibilities: "Possibilities",
         },
       },
       2: {
         language: "Hindi",
         translations: {
-          heading: "अन्वेषण करें",
-          subheading: "भारतीयता - अध्ययन का भारतीयकरण",
-          possibilities: "संभावनाएं",
+          heading: "एक्सप्लोर",
         },
       },
       3: {
         language: "Marathi",
         translations: {
-          heading: "अन्वेषण करा",
-          subheading: "भारतीयता - शिक्षणाचा भारतीयकरण",
-          possibilities: "सक्यता",
+          heading: "एक्सप्लोर",
         },
       },
     };
 
-    // Return the corresponding language object or fallback to English
     return languages[languageNumber] || languages[1];
   };
 
@@ -43,16 +103,37 @@ const ExploreSection: React.FC = () => {
     currentLanguageNumber
   );
 
-  // Function to change language
-  const changeLanguage = (languageNumber: number) => {
-    setUserPreferences({ language: languageNumber });
-  };
+  // Get the courses based on selected language
+  const currentCourses = courses[currentLanguageNumber];
 
   return (
-    <section className="hero flex min-h-screen pt-20">
-      {" "}
-      {/* Added pt-20 padding */}
-      {text.heading}
+    <section>
+      <h1 className="text-3xl font-bold">{text.heading}</h1>
+
+      <div className="mt-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Iterate over courses to display each one as a block */}
+          {currentCourses.map((course) => (
+            <div
+              key={course.id}
+              className="course-card bg-white shadow-md rounded-lg overflow-hidden"
+            >
+              {/* Link without <a> tag inside */}
+              <Link href={`/course/${course.id}`}>
+                <img
+                  src={course.imageUrl}
+                  alt={course.title}
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-4">
+                  <h3 className="text-xl font-semibold">{course.title}</h3>
+                  <p className="text-gray-600 mt-2">{course.description}</p>
+                </div>
+              </Link>
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 };

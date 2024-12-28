@@ -50,7 +50,7 @@ const NavSection = ({ translations }: NavSectionProps) => {
     : translations[1]?.language || "English"; // Fallback to English if no userPreferences
 
   return (
-    <nav className="p-4 fixed w-full top-0 left-0 z-10">
+    <nav className="p-4  w-full top-0 left-0 z-10">
       <div className="flex justify-between items-center max-w-screen-xl mx-auto">
         <Link
           href="/"

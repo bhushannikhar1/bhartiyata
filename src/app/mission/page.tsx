@@ -4,9 +4,10 @@
 import { useState, useEffect } from "react";
 import NavSection from "../components/NavSection"; // Import the new NavSection component
 import { useUserPreferences } from "@/contexts/UserPreferencesContext"; // Import context for preferences
-import PossibilitiesSection from "../components/PossibilitiesSection";
 
-export default function PossibilitiesPage() {
+import MissionSection from "../components/MissionSection";
+
+export default function MissionPage() {
   const { userPreferences } = useUserPreferences();
 
   // Method to map language number to its corresponding object
@@ -44,7 +45,7 @@ export default function PossibilitiesPage() {
     <div className="min-h-screen">
       {/* Pass translations to NavSection */}
       <NavSection translations={translations} />
-      <PossibilitiesSection translations={lang} />{" "}
+      <MissionSection translations={lang} />{" "}
       {/* Pass translations to HeroSection */}
     </div>
   );
