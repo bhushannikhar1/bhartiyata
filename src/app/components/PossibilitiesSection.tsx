@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { useUserPreferences } from "@/contexts/UserPreferencesContext";
 
 const PossibilitiesSection: React.FC = () => {
@@ -49,6 +48,8 @@ const PossibilitiesSection: React.FC = () => {
     <section className="hero flex min-h-screen pt-20">
       {" "}
       {/* Added pt-20 padding */}
+      {language}
+      {changeLanguage}
       {text.heading}
     </section>
   );
