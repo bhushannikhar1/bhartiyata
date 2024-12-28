@@ -5,8 +5,16 @@ import { useState, useEffect, useRef } from "react";
 import { useUserPreferences } from "@/contexts/UserPreferencesContext"; // Import context for preferences
 import Link from "next/link"; // Import next/link for navigation
 
+type LanguageTranslation = {
+  language: string;
+  translations: {
+    heading: string;
+    subheading: string;
+  };
+};
+
 type NavSectionProps = {
-  translations: Record<string, any>; // Expect translations to be passed from the parent component (HomePage)
+  translations: Record<string, LanguageTranslation>; // Expect translations to be passed from the parent component (HomePage)
 };
 
 const NavSection = ({ translations }: NavSectionProps) => {
