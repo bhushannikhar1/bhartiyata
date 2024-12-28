@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { useUserPreferences } from "@/contexts/UserPreferencesContext";
+import Image from "next/image";
 
 const ExploreSection: React.FC = () => {
-  const { userPreferences, setUserPreferences } = useUserPreferences();
+  const { userPreferences } = useUserPreferences();
 
   // Define course data for each language
   const courses = {
@@ -120,12 +121,13 @@ const ExploreSection: React.FC = () => {
             >
               {/* Link without <a> tag inside */}
               <Link href={`/course/${course.id}`}>
-                <img
+                <Image
                   src={course.imageUrl}
                   alt={course.title}
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-4">
+                  {language}
                   <h3 className="text-xl font-semibold">{course.title}</h3>
                   <p className="text-gray-600 mt-2">{course.description}</p>
                 </div>

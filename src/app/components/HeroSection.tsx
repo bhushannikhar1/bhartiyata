@@ -70,6 +70,7 @@ const HeroSection: React.FC = () => {
                 href="/possibilities"
                 className="bg-transparent border border-blue-500 text-blue-500 font-semibold py-2 px-6 rounded-full hover:bg-blue-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
               >
+                {changeLanguage}
                 {text.possibilities}
               </Link>
             </div>
