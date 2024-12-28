@@ -1,7 +1,6 @@
 // HomePage.tsx
 "use client"; // Mark as a client-side component
 
-import { useState, useEffect } from "react";
 import NavSection from "../components/NavSection"; // Import the new NavSection component
 import { useUserPreferences } from "@/contexts/UserPreferencesContext"; // Import context for preferences
 import PossibilitiesSection from "../components/PossibilitiesSection";
@@ -43,6 +42,7 @@ export default function PossibilitiesPage() {
   return (
     <div className="min-h-screen">
       {/* Pass translations to NavSection */}
+      {language}
       <NavSection translations={translations} />
       <PossibilitiesSection translations={lang} />{" "}
       {/* Pass translations to HeroSection */}

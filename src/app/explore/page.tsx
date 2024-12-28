@@ -42,6 +42,7 @@ export default function ExplorePage() {
   return (
     <div className="min-h-screen">
       {/* Pass translations to NavSection */}
+      {language}
       <NavSection translations={translations} />
       <ExploreSection translations={lang} />{" "}
       {/* Pass translations to HeroSection */}
