@@ -1,101 +1,134 @@
-import Image from "next/image";
+"use client"; // Mark as a client-side component
 
-export default function Home() {
+import { useState, useEffect, useRef } from "react";
+import { useUserPreferences } from "../contexts/UserPreferencesContext"; // Import context for preferences
+import Link from "next/link"; // Import next/link for navigation
+import HeroSection from "./components/HeroSection";
+
+export default function HomePage() {
+  const { userPreferences, setUserPreferences } = useUserPreferences();
+
+  // Method to map language number to its corresponding object
+  const getLanguageDetails = (languageNumber: number) => {
+    const languages = {
+      1: {
+        language: "English",
+      },
+      2: {
+        language: "Hindi",
+      },
+      3: {
+        language: "Marathi",
+      },
+    };
+
+    // Return the corresponding language object or fallback to English
+    return languages[languageNumber] || languages[1];
+  };
+
+  // Default to English (language 1) if no language is selected
+  const currentLanguageNumber = userPreferences?.language || 1;
+  const { language, translations: text } = getLanguageDetails(
+    currentLanguageNumber
+  );
+
+  // Function to change language and set the numeric value
+  const changeLanguage = (languageNumber: number) => {
+    setUserPreferences({ language: languageNumber });
+    setIsOpen(false); // Close the dropdown after selecting language
+  };
+
+  const [isOpen, setIsOpen] = useState(false); // For dropdown menu toggle
+  const dropdownRef = useRef(null); // Ref for the dropdown menu
+
+  // Toggle dropdown menu
+  const toggleDropdown = () => {
+    setIsOpen((prev) => !prev);
+  };
+
+  // Close dropdown if clicking outside
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      dropdownRef.current &&
+      !dropdownRef.current.contains(event.target as Node)
+    ) {
+      setIsOpen(false); // Close dropdown if clicked outside
+    }
+  };
+
+  // Add event listener for clicks outside
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside); // Cleanup on component unmount
+    };
+  }, []);
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="min-h-screen">
+      {/* Menu */}
+      <nav className="p-4 fixed w-full top-0 left-0 z-10">
+        <div className="flex justify-between items-center max-w-screen-xl mx-auto">
+          <Link
+            href="/"
+            className="text-gray-600 dark:text-gray-300 font-semibold hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 hover:bg-clip-text hover:text-transparent"
+          >
+            Bhartiyata
+          </Link>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          <div className="space-x-4 flex items-center">
+            <Link
+              href="/settings"
+              className="font-semibold text-gray-600 dark:text-gray-300 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 hover:bg-clip-text hover:text-transparent"
+            >
+              Settings
+            </Link>
+
+            <Link
+              href="/mission"
+              className="font-semibold text-gray-600 dark:text-gray-300 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 hover:bg-clip-text hover:text-transparent"
+            >
+              Our Mission
+            </Link>
+
+            {/* Language Dropdown */}
+            <div className="relative" ref={dropdownRef}>
+              <button
+                onClick={toggleDropdown}
+                className="text-white bg-gray-600 px-4 py-2 rounded-md focus:outline-none"
+              >
+                {language} {/* Display language as a string */}
+              </button>
+
+              {isOpen && (
+                <div className="absolute right-0 mt-2 bg-white border border-gray-200 rounded-md shadow-lg w-48 z-20">
+                  <button
+                    onClick={() => changeLanguage(1)} // Set to English (1)
+                    className="block w-full px-4 py-2 text-gray-700 text-center hover:bg-gray-200"
+                  >
+                    English
+                  </button>
+                  <button
+                    onClick={() => changeLanguage(2)} // Set to Hindi (2)
+                    className="block w-full px-4 py-2 text-gray-700 text-center hover:bg-gray-200"
+                  >
+                    Hindi [हिंदी]
+                  </button>
+                  <button
+                    onClick={() => changeLanguage(3)} // Set to Marathi (3)
+                    className="block w-full px-4 py-2 text-gray-700 text-center hover:bg-gray-200"
+                  >
+                    Marathi [मराठी]
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </nav>
+      <HeroSection translations={text} />{" "}
+      {/* Pass translations to HeroSection */}
     </div>
   );
 }
