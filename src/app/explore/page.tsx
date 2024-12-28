@@ -2,11 +2,12 @@
 "use client"; // Mark as a client-side component
 
 import { useState, useEffect } from "react";
-import NavSection from "./components/NavSection"; // Import the new NavSection component
-import HeroSection from "./components/HeroSection";
+import NavSection from "../components/NavSection"; // Import the new NavSection component
+import HeroSection from "../components/HeroSection";
 import { useUserPreferences } from "@/contexts/UserPreferencesContext"; // Import context for preferences
+import ExploreSection from "../components/ExploreSection";
 
-export default function HomePage() {
+export default function ExplorePage() {
   const { userPreferences } = useUserPreferences();
 
   // Method to map language number to its corresponding object
@@ -44,7 +45,7 @@ export default function HomePage() {
     <div className="min-h-screen">
       {/* Pass translations to NavSection */}
       <NavSection translations={translations} />
-      <HeroSection translations={lang} />{" "}
+      <ExploreSection translations={lang} />{" "}
       {/* Pass translations to HeroSection */}
     </div>
   );
