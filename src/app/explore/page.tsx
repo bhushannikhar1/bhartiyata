@@ -1,9 +1,7 @@
 // HomePage.tsx
 "use client"; // Mark as a client-side component
 
-import { useState, useEffect } from "react";
 import NavSection from "../components/NavSection"; // Import the new NavSection component
-import HeroSection from "../components/HeroSection";
 import { useUserPreferences } from "@/contexts/UserPreferencesContext"; // Import context for preferences
 import ExploreSection from "../components/ExploreSection";
 
