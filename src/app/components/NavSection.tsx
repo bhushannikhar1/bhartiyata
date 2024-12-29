@@ -4,6 +4,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useUserPreferences } from "@/contexts/UserPreferencesContext"; // Import context for preferences
 import Link from "next/link"; // Import next/link for navigation
+import { CogIcon } from "@heroicons/react/16/solid";
 
 type LanguageTranslation = {
   language: string;
@@ -69,18 +70,30 @@ const NavSection = ({ translations }: NavSectionProps) => {
 
         <div className="space-x-4 flex items-center">
           <Link
-            href="/settings"
+            href="/explore"
             className="font-semibold text-gray-600 dark:text-gray-300 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 hover:bg-clip-text hover:text-transparent"
           >
-            Settings
+            Explore
           </Link>
 
+          <Link
+            href="/possibilities"
+            className="font-semibold text-gray-600 dark:text-gray-300 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 hover:bg-clip-text hover:text-transparent"
+          >
+            Possibilities
+          </Link>
           <Link
             href="/mission"
             className="font-semibold text-gray-600 dark:text-gray-300 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 hover:bg-clip-text hover:text-transparent"
           >
             Our Mission
           </Link>
+          {/* <Link
+            href="/settings"
+            className="font-semibold text-gray-600 dark:text-gray-300 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 hover:bg-clip-text hover:text-transparent"
+          >
+            <CogIcon className="h-6 w-6 text-gray-500" />
+          </Link> */}
 
           {/* Language Dropdown */}
           <div className="relative" ref={dropdownRef}>

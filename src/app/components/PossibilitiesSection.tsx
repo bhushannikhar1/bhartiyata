@@ -12,21 +12,21 @@ const PossibilitiesSection: React.FC = () => {
         language: "English",
         translations: {
           heading: "Possibilities",
-          subheading: "Bhartiyata - Indianization of learning",
+          comingsoon: "Coming Soon",
         },
       },
       2: {
         language: "Hindi",
         translations: {
           heading: "संभावनाएं",
-          subheading: "भारतीयता - अध्ययन का भारतीयकरण",
+          comingsoon: "जल्द आ रहा है",
         },
       },
       3: {
         language: "Marathi",
         translations: {
-          heading: "सक्यता",
-          subheading: "भारतीयता - शिक्षणाचा भारतीयकरण",
+          heading: "शक्यता",
+          comingsoon: "लवकरच येत आहे",
         },
       },
     };
@@ -46,7 +46,22 @@ const PossibilitiesSection: React.FC = () => {
     setUserPreferences({ language: languageNumber });
   };
 
-  return <section className="hero flex "> {text.heading}</section>;
+  return (
+    <section>
+      <div className="mission-section px-4 py-8">
+        <div className="container max-w-4xl mx-auto text-center">
+          <div className="heading-container mb-8">
+            {" "}
+            {/* Increased mb to 8 */}
+            <h2 className="text-3xl font-bold text-blue-500">{text.heading}</h2>
+            <h3 className="text-xl font-semibold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
+              {text.comingsoon}
+            </h3>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default PossibilitiesSection;

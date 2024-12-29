@@ -42,9 +42,17 @@ export default function ExplorePage() {
   };
 
   return (
-    <div className="min-h-screen">
+    // <div className="min-h-screen">
+    //   <NavSection translations={translations} />
+    //   <ExploreSection translations={lang} />
+    // </div>
+    <section>
       <NavSection translations={translations} />
-      <ExploreSection translations={lang} />
-    </div>
+      <div>
+        <div className="container max-w-7xl mx-auto text-center">
+          <ExploreSection translations={lang} />
+        </div>
+      </div>
+    </section>
   );
 }

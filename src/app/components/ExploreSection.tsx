@@ -8,72 +8,32 @@ const ExploreSection: React.FC = () => {
   const { userPreferences } = useUserPreferences();
 
   // Define course data for each language
-  const courses = {
+  const courses: Courses = {
     1: [
-      // English
       {
         id: "1",
         title: "Start",
         description: "How and where to start?",
         imageUrl: "/basic.png", // Dummy image for computer basics course
       },
-      {
-        id: "2",
-        title: "History of Computers",
-        description: "Understand the evolution of computers",
-        imageUrl: "/basic.png", // Dummy image for history of computers course
-      },
-      {
-        id: "3",
-        title: "Applications of Computers",
-        description: "Explore the rich applications of computer.",
-        imageUrl: "/basic.png", // Dummy image for applications of computers course
-      },
     ],
     2: [
-      // Hindi
       {
         id: "1",
-        title: "कंप्यूटर का परिचय",
-        description: "कंप्यूटर सिस्टम के मूल सिद्धांतों के बारे में जानें।",
-        imageUrl: "/basic.png", // Dummy image for computer basics course
-      },
-      {
-        id: "2",
-        title: "कंप्यूटर का इतिहास",
-        description: "कंप्यूटर के विकास को समझें।",
-        imageUrl: "/basic.png", // Dummy image for history of computers course
-      },
-      {
-        id: "3",
-        title: "कंप्यूटर के अनुप्रयोग",
-        description: "कंप्यूटर के विविध अनुप्रयोगों का अन्वेषण करें।",
-        imageUrl: "/basic.png", // Dummy image for applications of computers course
+        title: "शुरू करें", // Hindi translation of "Start"
+        description: "कहाँ और कैसे शुरू करें?", // Hindi translation of "How and where to start?"
+        imageUrl: "/basic.png", // Same dummy image
       },
     ],
     3: [
-      // Marathi
       {
         id: "1",
-        title: "कंप्युटरची मूलतत्त्वे",
-        description: "कंप्युटर प्रणालीच्या मूलतत्त्वांबद्दल शिका.",
-        imageUrl: "/basic.png", // Dummy image for computer basics course
-      },
-      {
-        id: "2",
-        title: "कंप्युटरचा इतिहास",
-        description: "कंप्युटरच्या विकासाची समज घेा.",
-        imageUrl: "/basic.png", // Dummy image for history of computers course
-      },
-      {
-        id: "3",
-        title: "कंप्युटरचे अनुप्रयोग",
-        description: "कंप्युटरच्या विविध अनुप्रयोगांचा अभ्यास करा.",
-        imageUrl: "/basic.png", // Dummy image for applications of computers course
+        title: "प्रारंभ करा", // Marathi translation of "Start"
+        description: "कसे आणि कुठून सुरू करावे?", // Marathi translation of "How and where to start?"
+        imageUrl: "/basic.png", // Same dummy image
       },
     ],
   };
-
   // Method to map language number to its corresponding object
   const getLanguageDetails = (languageNumber: number) => {
     const languages = {
@@ -112,31 +72,33 @@ const ExploreSection: React.FC = () => {
   return (
     <section>
       <div className="m-8">
-        <h3 className="text-xl font-bold text-gray-500">{text.heading}</h3>
-        <br></br>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Iterate over courses to display each one as a block */}
-          {currentCourses.map((course) => (
-            <div
-              key={course.id}
-              className="course-card bg-white shadow-md rounded-lg overflow-hidden"
-            >
-              {/* Link without <a> tag inside */}
-              <Link href={`course/${course.id}`}>
-                <Image
-                  src={course.imageUrl}
-                  alt={course.title}
-                  className="w-full h-48 object-cover"
-                  width={400}
-                  height={300}
-                />
-                <div className="p-4">
-                  <h3 className="text-xl font-semibold">{course.title}</h3>
-                  <p className="text-gray-600 mt-2">{course.description}</p>
-                </div>
-              </Link>
-            </div>
-          ))}
+        <h3 className="text-3xl m-8 font-bold text-blue-500">{text.heading}</h3>
+        <div>
+          <div className="flex justify-center">
+            {/* className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"> */}
+            {/* Iterate over courses to display each one as a block */}
+            {currentCourses.map((course) => (
+              <div
+                key={course.id}
+                className="course-card bg-white shadow-md rounded-lg overflow-hidden"
+              >
+                {/* Link without <a> tag inside */}
+                <Link href={`course/${course.id}`}>
+                  <Image
+                    src={course.imageUrl}
+                    alt={course.title}
+                    className="w-full h-48 object-cover"
+                    width={400}
+                    height={300}
+                  />
+                  <div className="p-4">
+                    <h3 className="text-xl font-semibold">{course.title}</h3>
+                    <p className="text-gray-600 mt-2">{course.description}</p>
+                  </div>
+                </Link>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
