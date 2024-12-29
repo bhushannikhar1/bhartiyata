@@ -1,6 +1,7 @@
 /* eslint-disable */
 
 import { useUserPreferences } from "@/contexts/UserPreferencesContext";
+import Image from "next/image";
 
 const MissionSection: React.FC = () => {
   const { userPreferences, setUserPreferences } = useUserPreferences();
@@ -48,13 +49,27 @@ const MissionSection: React.FC = () => {
   };
 
   return (
-    <section className="mission-section  px-4 py-8 ">
+    <section className="mission-section px-4 py-8">
       <div className="container max-w-4xl mx-auto text-center">
         <div className="heading-container mb-8">
+          {" "}
+          {/* Increased mb to 8 */}
           <h2 className="text-3xl font-bold text-blue-500">{text.heading}</h2>
           <h3 className="text-xl text-gray-600 mt-2">{text.subheading}</h3>
+          <div className="image-container mt-6 mb-4">
+            {" "}
+            {/* Added mt-6 to push image down */}
+            <Image
+              src="/mission.jpg" // Replace with your image path or URL
+              alt="Mission Image" // Add a descriptive alt text
+              width={200} // Width of the image
+              height={120} // Height of the image
+              className="mx-auto" // Removed margin-bottom from here
+            />
+          </div>
         </div>
-        <div className="mission-statement bg-white p-6 rounded-lg  text-gray-700">
+
+        <div className="mission-statement bg-white  rounded-lg text-gray-700">
           <p className="text-lg leading-relaxed text-justify">
             {text.missionStatement}
           </p>

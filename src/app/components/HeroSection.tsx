@@ -24,7 +24,7 @@ const HeroSection: React.FC = () => {
         translations: {
           heading: "लोगों को सीखने के लिए सशक्त बनाना",
           subheading: "भारतीयता - अध्ययन का भारतीयकरण",
-          explore: "अन्वेषण करें",
+          explore: "एक्सप्लोर करें",
           possibilities: "संभावनाएं",
         },
       },
@@ -33,8 +33,8 @@ const HeroSection: React.FC = () => {
         translations: {
           heading: "लोकांना शिकण्यास सशक्त बनवणे",
           subheading: "भारतीयता - शिक्षणाचा भारतीयकरण",
-          explore: "अन्वेषण करा",
-          possibilities: "सक्यता",
+          explore: "एक्सप्लोर करा",
+          possibilities: "शक्यता",
         },
       },
     };
