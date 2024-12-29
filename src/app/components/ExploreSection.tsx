@@ -13,8 +13,8 @@ const ExploreSection: React.FC = () => {
       // English
       {
         id: "1",
-        title: "Basics of Computer",
-        description: "Learn basics of computer system",
+        title: "Start",
+        description: "How and where to start?",
         imageUrl: "/basic.png", // Dummy image for computer basics course
       },
       {
@@ -111,9 +111,9 @@ const ExploreSection: React.FC = () => {
 
   return (
     <section>
-      <h1 className="text-3xl font-bold">{text.heading}</h1>
-
-      <div className="mt-8">
+      <div className="m-8">
+        <h3 className="text-xl font-bold text-gray-500">{text.heading}</h3>
+        <br></br>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Iterate over courses to display each one as a block */}
           {currentCourses.map((course) => (
