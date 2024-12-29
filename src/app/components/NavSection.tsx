@@ -14,7 +14,7 @@ type LanguageTranslation = {
 };
 
 type NavSectionProps = {
-  translations: Record<string, LanguageTranslation>; // Expect translations to be passed from the parent component (HomePage)
+  translations: Record<string, LanguageTranslation> | undefined; // Allow translations to be undefined
 };
 
 const NavSection = ({ translations }: NavSectionProps) => {
@@ -54,11 +54,11 @@ const NavSection = ({ translations }: NavSectionProps) => {
 
   // Ensure userPreferences is not null or undefined
   const currentLanguage = userPreferences?.language
-    ? translations[userPreferences.language]?.language
-    : translations[1]?.language || "English"; // Fallback to English if no userPreferences
+    ? translations?.[userPreferences.language]?.language
+    : translations?.[1]?.language || "English"; // Fallback to "English" if translations or userPreferences is undefined
 
   return (
-    <nav className="p-4  w-full top-0 left-0 z-10">
+    <nav className="p-4 w-full top-0 left-0 z-10">
       <div className="flex justify-between items-center max-w-screen-xl mx-auto">
         <Link
           href="/"
@@ -91,7 +91,7 @@ const NavSection = ({ translations }: NavSectionProps) => {
               {currentLanguage} {/* Display language as a string */}
             </button>
 
-            {isOpen && (
+            {isOpen && translations && (
               <div className="absolute right-0 mt-2 bg-white border border-gray-200 rounded-md shadow-lg w-48 z-20">
                 {Object.keys(translations).map((langKey) => (
                   <button

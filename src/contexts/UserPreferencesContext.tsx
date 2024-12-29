@@ -38,7 +38,7 @@ export const UserPreferencesProvider = ({
       if (storedPreferences) {
         setUserPreferencesState(JSON.parse(storedPreferences));
       } else {
-        const defaultPreferences: UserPreferences = { language: "English" };
+        const defaultPreferences: UserPreferences = { language: "1" };
         setUserPreferencesState(defaultPreferences);
       }
     }
