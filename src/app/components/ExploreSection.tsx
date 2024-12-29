@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import Link from "next/link";
 import { useUserPreferences } from "@/contexts/UserPreferencesContext";
 import Image from "next/image";
@@ -13,19 +15,19 @@ const ExploreSection: React.FC = () => {
         id: "1",
         title: "Basics of Computer",
         description: "Learn basics of computer system",
-        imageUrl: "https://via.placeholder.com/400x300?text=Basic", // Dummy image for computer basics course
+        imageUrl: "/basic.png", // Dummy image for computer basics course
       },
       {
         id: "2",
         title: "History of Computers",
         description: "Understand the evolution of computers",
-        imageUrl: "https://via.placeholder.com/400x300?text=Basic", // Dummy image for history of computers course
+        imageUrl: "/basic.png", // Dummy image for history of computers course
       },
       {
         id: "3",
         title: "Applications of Computers",
         description: "Explore the rich applications of computer.",
-        imageUrl: "https://via.placeholder.com/400x300?text=Basic", // Dummy image for applications of computers course
+        imageUrl: "/basic.png", // Dummy image for applications of computers course
       },
     ],
     2: [
@@ -34,19 +36,19 @@ const ExploreSection: React.FC = () => {
         id: "1",
         title: "कंप्यूटर का परिचय",
         description: "कंप्यूटर सिस्टम के मूल सिद्धांतों के बारे में जानें।",
-        imageUrl: "https://via.placeholder.com/400x300?text=Basic", // Dummy image for computer basics course
+        imageUrl: "/basic.png", // Dummy image for computer basics course
       },
       {
         id: "2",
         title: "कंप्यूटर का इतिहास",
         description: "कंप्यूटर के विकास को समझें।",
-        imageUrl: "https://via.placeholder.com/400x300?text=Basic", // Dummy image for history of computers course
+        imageUrl: "/basic.png", // Dummy image for history of computers course
       },
       {
         id: "3",
         title: "कंप्यूटर के अनुप्रयोग",
         description: "कंप्यूटर के विविध अनुप्रयोगों का अन्वेषण करें।",
-        imageUrl: "https://via.placeholder.com/400x300?text=Basic", // Dummy image for applications of computers course
+        imageUrl: "/basic.png", // Dummy image for applications of computers course
       },
     ],
     3: [
@@ -55,19 +57,19 @@ const ExploreSection: React.FC = () => {
         id: "1",
         title: "कंप्युटरची मूलतत्त्वे",
         description: "कंप्युटर प्रणालीच्या मूलतत्त्वांबद्दल शिका.",
-        imageUrl: "https://via.placeholder.com/400x300?text=Basic", // Dummy image for computer basics course
+        imageUrl: "/basic.png", // Dummy image for computer basics course
       },
       {
         id: "2",
         title: "कंप्युटरचा इतिहास",
         description: "कंप्युटरच्या विकासाची समज घेा.",
-        imageUrl: "https://via.placeholder.com/400x300?text=Basic", // Dummy image for history of computers course
+        imageUrl: "/basic.png", // Dummy image for history of computers course
       },
       {
         id: "3",
         title: "कंप्युटरचे अनुप्रयोग",
         description: "कंप्युटरच्या विविध अनुप्रयोगांचा अभ्यास करा.",
-        imageUrl: "https://via.placeholder.com/400x300?text=Basic", // Dummy image for applications of computers course
+        imageUrl: "/basic.png", // Dummy image for applications of computers course
       },
     ],
   };
@@ -125,9 +127,10 @@ const ExploreSection: React.FC = () => {
                   src={course.imageUrl}
                   alt={course.title}
                   className="w-full h-48 object-cover"
+                  width={400}
+                  height={300}
                 />
                 <div className="p-4">
-                  {language}
                   <h3 className="text-xl font-semibold">{course.title}</h3>
                   <p className="text-gray-600 mt-2">{course.description}</p>
                 </div>

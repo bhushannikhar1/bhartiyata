@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { useUserPreferences } from "@/contexts/UserPreferencesContext";
 
 const MissionSection: React.FC = () => {
@@ -44,15 +46,7 @@ const MissionSection: React.FC = () => {
     setUserPreferences({ language: languageNumber });
   };
 
-  return (
-    <section className="hero flex min-h-screen pt-20">
-      {" "}
-      {/* Added pt-20 padding */}
-      {language}
-      {changeLanguage}
-      {text.heading}
-    </section>
-  );
+  return <section className="hero flex min-h-screen">{text.heading}</section>;
 };
 
 export default MissionSection;

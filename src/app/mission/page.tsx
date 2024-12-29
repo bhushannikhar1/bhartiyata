@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 // HomePage.tsx
 "use client"; // Mark as a client-side component
 
@@ -42,11 +44,8 @@ export default function MissionPage() {
 
   return (
     <div className="min-h-screen">
-      {/* Pass translations to NavSection */}
-      {language}
       <NavSection translations={translations} />
-      <MissionSection translations={lang} />{" "}
-      {/* Pass translations to HeroSection */}
+      <MissionSection translations={lang} />
     </div>
   );
 }

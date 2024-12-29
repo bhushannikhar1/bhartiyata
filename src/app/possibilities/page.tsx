@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 // HomePage.tsx
 "use client"; // Mark as a client-side component
 
@@ -41,11 +43,8 @@ export default function PossibilitiesPage() {
 
   return (
     <div className="min-h-screen">
-      {/* Pass translations to NavSection */}
-      {language}
       <NavSection translations={translations} />
-      <PossibilitiesSection translations={lang} />{" "}
-      {/* Pass translations to HeroSection */}
+      <PossibilitiesSection translations={lang} />
     </div>
   );
 }

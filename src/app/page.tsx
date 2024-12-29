@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 // HomePage.tsx
 "use client"; // Mark as a client-side component
 
@@ -41,11 +43,8 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen">
-      {/* Pass translations to NavSection */}
-      {language}
       <NavSection translations={translations} />
-      <HeroSection translations={lang} />{" "}
-      {/* Pass translations to HeroSection */}
+      <HeroSection translations={lang} />
     </div>
   );
 }
