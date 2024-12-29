@@ -122,7 +122,7 @@ const ExploreSection: React.FC = () => {
               className="course-card bg-white shadow-md rounded-lg overflow-hidden"
             >
               {/* Link without <a> tag inside */}
-              <Link href={`/course/${course.id}`}>
+              <Link href={`course/${course.id}`}>
                 <Image
                   src={course.imageUrl}
                   alt={course.title}

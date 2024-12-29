@@ -58,9 +58,9 @@ export default function SettingsPage() {
   };
 
   return (
-    <div>
+    <div className="bg-gray-100 min-h-screen">
       <NavSection translations={text.languagePreferences} />
-      <div className="flex justify-center items-center min-h-screen bg-gray-100 p-6">
+      <div className="flex justify-center items-center   p-6">
         <div className="bg-white p-8 rounded-lg shadow-xl w-full max-w-lg">
           {/* Settings Header */}
           <h1 className="text-3xl font-semibold text-gray-800 mb-6">

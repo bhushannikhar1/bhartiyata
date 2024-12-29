@@ -1,6 +1,3 @@
-/* eslint-disable */
-
-// HomePage.tsx
 "use client"; // Mark as a client-side component
 
 import NavSection from "./components/NavSection"; // Import the new NavSection component
@@ -42,9 +39,14 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex flex-col">
+      {/* The NavSection will push the HeroSection content down, so we use flex */}
       <NavSection translations={translations} />
-      <HeroSection translations={lang} />
+
+      {/* HeroSection will take up the remaining space and be centered */}
+      <div className="flex-1 flex items-center justify-center">
+        <HeroSection translations={lang} />
+      </div>
     </div>
   );
 }

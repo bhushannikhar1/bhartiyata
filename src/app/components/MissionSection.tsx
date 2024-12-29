@@ -46,7 +46,7 @@ const MissionSection: React.FC = () => {
     setUserPreferences({ language: languageNumber });
   };
 
-  return <section className="hero flex min-h-screen">{text.heading}</section>;
+  return <section className="hero flex ">{text.heading}</section>;
 };
 
 export default MissionSection;

@@ -1,4 +1,4 @@
-/* eslint-disable */
+"use client"; // Mark as a client-side component
 
 import Link from "next/link";
 import { useUserPreferences } from "@/contexts/UserPreferencesContext";
@@ -54,7 +54,7 @@ const HeroSection: React.FC = () => {
   };
 
   return (
-    <section className="hero flex items-center justify-center min-h-screen">
+    <section className="hero flex items-center justify-center">
       <div className="text-center">
         <h1 className="text-5xl font-bold">{text.heading}</h1>
         <p className="mt-4 text-xl">{text.subheading}</p>

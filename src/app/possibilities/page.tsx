@@ -42,7 +42,7 @@ export default function PossibilitiesPage() {
   };
 
   return (
-    <div className="min-h-screen">
+    <div>
       <NavSection translations={translations} />
       <PossibilitiesSection translations={lang} />
     </div>
