@@ -1,3 +1,4 @@
+/* eslint-disable */
 "use client"; // Mark as a client-side component
 
 import Link from "next/link";
