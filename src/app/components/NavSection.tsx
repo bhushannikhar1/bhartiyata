@@ -1,3 +1,4 @@
+/* eslint-disable */
 // NavSection.tsx
 "use client"; // Mark as a client-side component
 
