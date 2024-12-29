@@ -15,7 +15,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Bhartiyata",
-  description: "Lets Prosper",
+  description:
+    "A multi-language Indian portal for learning and skill development",
 };
 
 export default function RootLayout({
